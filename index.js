@@ -43,16 +43,35 @@ app.use(BodyParser.urlencoded({ extended: false }));
 app.use(BodyParser.json()); // untuk client ngirim ke server
 app.use(express.static('public'))
 
-const {userRouters}=require('./routers')
+const {userRouters, authRouters}=require('./routers')
 
 
 app.get('/', (req,res)=>{
     return res.status(200).send('<h1>Selamat datang</h1>')
 })
 
+app.use('/auth',  authRouters)
 app.use('/user', userRouters)
 
 app.listen(PORT, () => console.log(`API jalan di PORT ${PORT}`));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     // app.get('/users', (req,res)=>{
